@@ -29,3 +29,15 @@ Aunque si se puede, no hay necesidad de correr 'ng serve' porque ASP.Net Core se
 Debería aparecer en los mensajes de consola algo que contenga: 
 > ** NG Live Development Server is listening on localhost:62593, open your browser on http://localhost:62593/ **
 
+Ahora bien, si bajas este codigo y lo quieres correr, segun yo debes correr estos comandos:
+
+> $ npm install
+
+> $ dotnet restore
+
+> $ webpack --config webpack.config.vendor.js
+
+> $ webpack 
+
+> $ dotnet run 
+
