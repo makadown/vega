@@ -11,6 +11,32 @@ En mi caso, ya tenia inicializado el repositorio. De modo que para crear de cero
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
+## Instalaciones varias
+
+Guiado de (https://www.c-sharpcorner.com/article/how-to-install-jquery-popper-and-bootstrap-in-angular/)
+
+> npm install jquery --save
+
+> npm install popper.js --save
+
+> npm install ngx-bootstrap bootstrap@4.1.1 --save
+
+en angular.json agregar :
+
+`"styles": [  
+              "src/styles.css",  
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"  
+            ],  
+"scripts": [              
+              "./node_modules/jquery/dist/jquery.min.js",  
+              "./node_modules/popper.js/dist/umd/popper.min.js",  
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"  
+            ]`
+
+y en styles.css 
+
+`@import '~bootstrap/dist/css/bootstrap.min.css'`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
