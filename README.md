@@ -1,43 +1,36 @@
 # VEGA
-Proyecto de Udemy en ASP .Net Core 2 con Angular 5
-(Adaptado del curso de Mosh)
+Proyecto de Udemy en ASP .Net Core 2 con Angular (Adaptado del curso de Mosh en Udemy).
 
-Creación de proyecto de cero:
+Desde el 7mo Commit se reinició de cero el proyecto debido a que el contenido del curso se desactualizó, con una combinación de entre que me perdí y que me pareció más saludable separar
+el proyecto en su respectivo FrontEnd y Backend. No me gustó el concepto que manejaba el template de proyecto Dotnet Core con Angular todo revuelto ahí bien quien sabe como. Guácala! :V
 
-- Descargar e instalar apnetcore :
-> https://www.microsoft.com/net/learn/get-started/windows
+En mi caso, ya tenia inicializado el repositorio. De modo que para crear de cero el proyecto, ejecuté: 
 
-En caso de no tenerlo, crear la variable de entorno:
-> SET ASPNETCORE_Environment=Development
+> ng new vega --skip-git
 
-- Instalar yeoman con template de apnetcore + angular
-> npm install -g yo generator-aspnetcore-spa (deprecated)
-  
-  ahora es:
-> npm install -g yo dotnet new angular
 
-- Correr este comando en directorio donde se encontrará el proyecto:
-> dotnet new angular
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
-Esto escafoldeará todo el merequetengue. Magia!
+## Development server
 
-- para correr la app (ojo, tarda un chingo)
-> dotnet run
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Aunque si se puede, no hay necesidad de correr 'ng serve' porque ASP.Net Core se encarga de usarlo internamente. Bueno, eso dice maicrosof (Fuente: https://docs.microsoft.com/en-us/aspnet/core/spa/angular?tabs=netcore-cli&view=aspnetcore-2.1).
+## Code scaffolding
 
-Debería aparecer en los mensajes de consola algo que contenga: 
-> ** NG Live Development Server is listening on localhost:62593, open your browser on http://localhost:62593/ **
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-Ahora bien, si bajas este codigo y lo quieres correr, segun yo debes correr estos comandos:
+## Build
 
-> $ npm install
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-> $ dotnet restore
+## Running unit tests
 
-> $ webpack --config webpack.config.vendor.js
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-> $ webpack 
+## Running end-to-end tests
 
-> $ dotnet run 
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
