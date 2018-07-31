@@ -21,6 +21,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
     BrowserModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'vehicles/new', component: VehicleFormComponent },
       { path: 'home', component: HomeComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchdataComponent },
