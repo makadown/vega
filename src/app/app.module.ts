@@ -6,6 +6,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchdataComponent } from './components/fetchdata/fetchdata.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
+import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { NavmenuComponent } from './components/navmenu/navmenu.component';
     CounterComponent,
     FetchdataComponent,
     HomeComponent,
-    NavmenuComponent
+    NavmenuComponent,
+    VehicleFormComponent
   ],
   imports: [
     BrowserModule,
