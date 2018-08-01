@@ -1,8 +1,10 @@
-import { MakeService } from './services/make.service';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { MakeService } from './services/make.service';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { FetchdataComponent } from './components/fetchdata/fetchdata.component';
@@ -21,6 +23,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
     VehicleFormComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },
