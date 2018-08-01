@@ -4,13 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { MakeService } from './services/make.service';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { FetchdataComponent } from './components/fetchdata/fetchdata.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
+
+import { MakeService } from './services/make.service';
+import { FeatureService } from './services/feature.service';
 
 
 @NgModule({
@@ -35,7 +37,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
   ]),
     HttpClientModule
   ],
-  providers: [MakeService],
+  providers: [MakeService, FeatureService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
