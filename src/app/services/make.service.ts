@@ -12,7 +12,8 @@ export class MakeService {
   constructor(private http: HttpClient) { }
 
   getMakes() {
-       return this.http.get(URL_SERVICIOS + 'api/makes');
+       // console.log('Peticion a ', URL_SERVICIOS + '/api/makes');
+       return this.http.get(URL_SERVICIOS + '/api/makes');
   }
 
 }
