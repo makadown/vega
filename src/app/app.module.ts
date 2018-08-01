@@ -1,3 +1,5 @@
+import { MakeService } from './services/make.service';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -7,6 +9,7 @@ import { FetchdataComponent } from './components/fetchdata/fetchdata.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
+
 
 @NgModule({
   declarations: [
@@ -26,9 +29,10 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchdataComponent },
       { path: '**', redirectTo: 'home' }
-  ])
+  ]),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MakeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
