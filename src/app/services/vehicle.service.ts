@@ -7,11 +7,17 @@ import { URL_SERVICIOS } from '../config/url.servicios';
 @Injectable({
   providedIn: 'root'
 })
-export class FeatureService {
+export class VehicleService {
 
   constructor(private http: HttpClient) { }
+
+  getMakes() {
+       // console.log('Peticion a ', URL_SERVICIOS + '/api/makes');
+       return this.http.get(URL_SERVICIOS + '/api/makes');
+  }
 
   public getFeatures() {
     return this.http.get(URL_SERVICIOS + '/api/features');
   }
+
 }

@@ -11,8 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 
-import { MakeService } from './services/make.service';
-import { FeatureService } from './services/feature.service';
+import { VehicleService } from './services/vehicle.service';
+
 
 
 @NgModule({
@@ -37,7 +37,7 @@ import { FeatureService } from './services/feature.service';
   ]),
     HttpClientModule
   ],
-  providers: [MakeService, FeatureService],
+  providers: [VehicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
