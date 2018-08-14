@@ -11,7 +11,9 @@ export class VehicleFormComponent implements OnInit {
   makes: any[];
   features: any[];
   models: any[];
-  vehicle: any = {};
+  vehicle: any = {
+    features: []
+  };
 
   constructor(private vehicleService: VehicleService) { }
 
@@ -38,6 +40,15 @@ export class VehicleFormComponent implements OnInit {
     });
 
     this.models = selectedMake ? selectedMake.models : [];
+  }
+
+  onFeatureToggle( featureId, $event) {
+     if ( $event.target.checked ) {
+       this.vehicle.features.push(featureId);
+     } else {
+       const index = this.vehicle.features.indexOf(featureId);
+       this.vehicle.features.splice(index, 1);
+     }
   }
 
 }
