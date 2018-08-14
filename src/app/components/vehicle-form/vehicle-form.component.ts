@@ -28,11 +28,12 @@ export class VehicleFormComponent implements OnInit {
 
   onMakeChange () {
     const selectedMake = this.makes.find( m => {
-      const numeroMake = +this.vehicle.make;
+      const numeroMake = +this.vehicle.makeId;
       /* Vehicle.make es string, m.id es number,
          por eso hice conversion para forzar la mejor
          practica de usar triple igual.
       */
+      delete this.vehicle.modelId;
       return m.id === numeroMake;
     });
 
