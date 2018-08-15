@@ -21,6 +21,7 @@ export class VehicleFormComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit() {
+
     this.vehicleService.getMakes().subscribe( (makes: any) => {
        this.makes = makes;
       // console.log('MAKES ', this.makes);
@@ -56,8 +57,7 @@ export class VehicleFormComponent implements OnInit {
 
   submit() {
     this.vehicleService.create(this.vehicle).subscribe(
-           x => this.toastr.success('Vehicle registered', 'Success!'),
-           err => this.toastr.error('An unexpected error happened', 'Error') );
+           x => this.toastr.success('Vehicle registered', 'Success!') );
   }
 
 }

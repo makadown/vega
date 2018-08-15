@@ -1,7 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,7 +15,7 @@ import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 
 import { VehicleService } from './services/vehicle.service';
-
+import { AppErrorHandler } from './app.error-handler';
 
 
 @NgModule({
@@ -47,7 +47,10 @@ import { VehicleService } from './services/vehicle.service';
   ]),
     HttpClientModule
   ],
-  providers: [VehicleService],
+  providers: [
+        {provide: ErrorHandler, useClass: AppErrorHandler},
+        VehicleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
