@@ -4,6 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+
 import { AppComponent } from './app.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { FetchdataComponent } from './components/fetchdata/fetchdata.component';
@@ -26,6 +29,13 @@ import { VehicleService } from './services/vehicle.service';
   ],
   imports: [
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+        timeOut: 5000,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,
+     }),
+    ToastContainerModule,
     BrowserModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },

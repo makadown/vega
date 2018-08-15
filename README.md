@@ -1,8 +1,11 @@
 # VEGA
-Proyecto de Udemy en ASP .Net Core 2 con Angular (Adaptado del curso de Mosh en Udemy).
+Proyecto de Udemy en ASP .Net Core 2 con Angular basado en el curso de mosh separado en 2 proyectos:
 
-Desde el 7mo Commit se reinició de cero el proyecto debido a que el contenido del curso se desactualizó, con una combinación de entre que me perdí y que me pareció más saludable separar
-el proyecto en su respectivo FrontEnd y Backend. No me gustó el concepto que manejaba el template de proyecto Dotnet Core con Angular todo revuelto ahí bien quien sabe como. Guácala! :V
+- https://github.com/makadown/vega
+
+- https://github.com/makadown/vega-backend
+
+Desde el 7mo Commit se reinició de cero el proyecto debido a que el contenido del curso se desactualizó, con una combinación de entre que me perdí y que me pareció más saludable separar el proyecto en su respectivo FrontEnd y Backend. No me gustó el concepto que manejaba el template de proyecto Dotnet Core con Angular todo revuelto ahí bien quien sabe como. Guácala! :V
 
 En mi caso, ya tenia inicializado el repositorio. De modo que para crear de cero el proyecto, ejecuté: 
 
@@ -21,16 +24,29 @@ Guiado de (https://www.c-sharpcorner.com/article/how-to-install-jquery-popper-an
 
 > npm install ngx-bootstrap bootstrap@4.1.1 --save
 
+> npm install @angular/animations@6.1.0 --save
+
+> npm install ngx-toastr --save
+
 en angular.json agregar :
 
-`"styles": [  
-              "src/styles.css",  
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"  
-            ],  
-"scripts": [              
-              "./node_modules/jquery/dist/jquery.min.js",  
-              "./node_modules/popper.js/dist/umd/popper.min.js",  
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"  
+`"styles": [
+  
+              "src/styles.css",
+              
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+
+              "./node_modules/ngx-toastr/toastr.css"
+
+            ],
+
+"scripts": [
+  
+              "./node_modules/jquery/dist/jquery.min.js",
+              
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]`
 
 y en styles.css 
