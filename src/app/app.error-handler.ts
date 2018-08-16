@@ -26,7 +26,7 @@ export class AppErrorHandler implements ErrorHandler {
           */
         this.ngZone.run(() => {
                 if (!isDevMode()) {
-                     Raven.captureException(error.originalError || error); 
+                     Raven.captureException(error.originalError || error);
                 }
                 this.toastr.error('An unexpected error happened', 'Error');
             });
