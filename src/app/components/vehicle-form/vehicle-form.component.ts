@@ -4,6 +4,9 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import {forkJoin} from 'rxjs';
 
+import { Vehicle } from './../../models/Vehicle';
+import { SaveVehicle } from './../../models/SaveVehicle';
+
 @Component({
   selector: 'app-vehicle-form',
   templateUrl: './vehicle-form.component.html',
@@ -14,9 +17,14 @@ export class VehicleFormComponent implements OnInit {
   makes: any[];
   features: any[];
   models: any[];
-  vehicle: any = {
-    contact: {},
-    features: []
+
+  vehicle: SaveVehicle = {
+    id: 0,
+    makeId: 0,
+    modelId: 0,
+    isRegistered: false,
+    features: [],
+    contact: { name: '', email: '', phone: '' }
   };
 
   constructor(private route: ActivatedRoute,
@@ -45,13 +53,23 @@ export class VehicleFormComponent implements OnInit {
             this.makes = data[0];
             this.features = data[1];
             if ( this.vehicle.id ) {
-                this.vehicle = data[2];
+                this.setVehicle( data[2] );
             }
           }, err => {
               if (err.status === 404 ) {
                   this.router.navigate(['/home']);
               }
       });
+  }
+
+  private setVehicle(v: Vehicle) {
+    this.vehicle.id = v.id;
+    this.vehicle.makeId = v.make.id;
+    this.vehicle.modelId = v.model.id;
+    this.vehicle.isRegistered = v.isRegistered;
+    // Característica de ES3, muy bonita
+    this.vehicle.features = v.features.map(f => f.id);
+    this.vehicle.contact = v.contact;
   }
 
   onMakeChange () {
