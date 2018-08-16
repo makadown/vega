@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VehicleService } from '../../services/vehicle.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import {forkJoin} from 'rxjs';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -29,22 +30,28 @@ export class VehicleFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.vehicleService.getVehicle(this.vehicle.id).subscribe( v => {
-        this.vehicle = v;
-    }, err => {
-        if (err.status === 404 && this.vehicle.id) {
-            this.router.navigate(['/home']);
-        }
-    });
+    let sources = null;
+    /* Meto los observables en una colección */
+    sources = [this.vehicleService.getMakes(),
+        this.vehicleService.getFeatures()
+      ];
 
-    this.vehicleService.getMakes().subscribe( (makes: any) => {
-       this.makes = makes;
-      // console.log('MAKES ', this.makes);
-    });
+    if ( this.vehicle.id ) {
+      sources.push(this.vehicleService.getVehicle(this.vehicle.id));
+    }
 
-    this.vehicleService.getFeatures().subscribe( (features: any) => {
-            this.features = features;
-    });
+    /* Me suscribo 3x1 (o 2x1, dependiendo) con un solo observable */
+    forkJoin(sources).subscribe( (data: any) => {
+            this.makes = data[0];
+            this.features = data[1];
+            if ( this.vehicle.id ) {
+                this.vehicle = data[2];
+            }
+          }, err => {
+              if (err.status === 404 ) {
+                  this.router.navigate(['/home']);
+              }
+      });
   }
 
   onMakeChange () {

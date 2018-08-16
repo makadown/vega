@@ -77,6 +77,12 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Further help / references
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+Sobre forkJoin en Observables
+https://blog.ng-classroom.com/blog/tips/fork-join/
+
+Para saber que onda con observables en angular 6
+https://stackoverflow.com/questions/42376972/best-way-to-import-observable-from-rxjs
