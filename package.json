@@ -27,6 +27,7 @@
     "ngx-bootstrap": "^3.0.1",
     "ngx-toastr": "^9.0.0",
     "popper.js": "^1.14.3",
+    "raven-js": "^3.26.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

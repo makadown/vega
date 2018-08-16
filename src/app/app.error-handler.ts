@@ -1,5 +1,7 @@
 import { ErrorHandler, Inject, NgZone } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import * as Raven from 'raven-js';
+
 
 export class AppErrorHandler implements ErrorHandler {
 
@@ -12,7 +14,8 @@ export class AppErrorHandler implements ErrorHandler {
          preciso escenario se tiene que meter la inyección en el constructor.
     */
     constructor( private ngZone: NgZone,
-                  @Inject(ToastrService) private toastr: ToastrService) { }
+                  @Inject(ToastrService) private toastr: ToastrService) {
+    }
 
     handleError(error: any): void {
         /* Aqui es muy importante entender el concepto de Zonas de Angular.
@@ -21,7 +24,10 @@ export class AppErrorHandler implements ErrorHandler {
         Referencia:
         https://blog.irontec.com/angular-changedetector-ngzone-y-asyncpipe/
           */
-        this.ngZone.run(() => this.toastr.error('An unexpected error happened', 'Error'));
+        this.ngZone.run(() => {
+                Raven.captureException(error.originalError || error);
+                this.toastr.error('An unexpected error happened', 'Error');
+            });
     }
 
 }

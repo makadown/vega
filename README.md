@@ -28,6 +28,10 @@ Guiado de (https://www.c-sharpcorner.com/article/how-to-install-jquery-popper-an
 
 > npm install ngx-toastr --save
 
+- Opcional para sentry.io (logger)
+> npm install raven-js --save
+
+
 en angular.json agregar :
 
 `"styles": [
