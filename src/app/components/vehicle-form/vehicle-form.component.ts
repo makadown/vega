@@ -54,6 +54,7 @@ export class VehicleFormComponent implements OnInit {
             this.features = data[1];
             if ( this.vehicle.id ) {
                 this.setVehicle( data[2] );
+                this.populateModels();
             }
           }, err => {
               if (err.status === 404 ) {
@@ -73,16 +74,19 @@ export class VehicleFormComponent implements OnInit {
   }
 
   onMakeChange () {
+    this.populateModels();
+    delete this.vehicle.modelId;
+  }
+
+  private populateModels() {
     const selectedMake = this.makes.find( m => {
       const numeroMake = +this.vehicle.makeId;
       /* Vehicle.make es string, m.id es number,
          por eso hice conversion para forzar la mejor
          practica de usar triple igual.
       */
-      delete this.vehicle.modelId;
       return m.id === numeroMake;
     });
-
     this.models = selectedMake ? selectedMake.models : [];
   }
 
