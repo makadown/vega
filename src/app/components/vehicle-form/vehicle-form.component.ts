@@ -24,7 +24,8 @@ export class VehicleFormComponent implements OnInit {
     modelId: 0,
     isRegistered: false,
     features: [],
-    contact: { name: '', email: '', phone: '' }
+    contact: { name: '', email: '', phone: '' },
+    lastUpdate: '2000-01-01'
   };
 
   constructor(private route: ActivatedRoute,
@@ -100,8 +101,13 @@ export class VehicleFormComponent implements OnInit {
   }
 
   submit() {
-    this.vehicleService.create(this.vehicle).subscribe(
-           x => this.toastr.success('Vehicle registered', 'Success!') );
+    if ( this.vehicle.id != null && this.vehicle.id > 0 ) {
+      this.vehicleService.update(this.vehicle).subscribe(
+        x => this.toastr.success('Vehicle updated', 'Success!') );
+    } else {
+      this.vehicleService.create(this.vehicle).subscribe(
+           x => this.toastr.success('Vehicle created', 'Success!') );
+    }
   }
 
 }

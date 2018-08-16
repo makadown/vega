@@ -1,10 +1,14 @@
 import { Contact } from './Contact';
 
-export interface SaveVehicle {
+export interface SaveVehicle extends BackendSaveVehicle {
     id: number;
-    modelId: number;
     makeId: number;
+}
+
+export interface BackendSaveVehicle {
+    modelId: number;
     isRegistered: boolean;
-    features: number[];
     contact: Contact;
+    lastUpdate: string;
+    features: number[];
 }
