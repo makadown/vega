@@ -1,4 +1,4 @@
-import { ErrorHandler, Inject, NgZone } from '@angular/core';
+import { ErrorHandler, Inject, NgZone, isDevMode } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import * as Raven from 'raven-js';
 
@@ -25,7 +25,9 @@ export class AppErrorHandler implements ErrorHandler {
         https://blog.irontec.com/angular-changedetector-ngzone-y-asyncpipe/
           */
         this.ngZone.run(() => {
-                Raven.captureException(error.originalError || error);
+                if (!isDevMode()) {
+                     Raven.captureException(error.originalError || error); 
+                }
                 this.toastr.error('An unexpected error happened', 'Error');
             });
     }
