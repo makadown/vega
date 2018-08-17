@@ -24,9 +24,29 @@ export class VehicleService {
     return this.http.post(URL_SERVICIOS + '/api/vehicles', backendSaveVehicle);
   }
 
+  /* OJO:
+   SaveVehicle lo necesito para los formularios.
+   BackendSaveVehicle lo necesito para enviarlo con la estructura que exige el backend, ej.
+         {
+	          "modelId": 12,
+          	"isRegistered": true,
+          	"contact" : {
+          			"name": "Conrad",
+          			"email": "Murua@esparza.com",
+          			"phone": "555444444"
+          	},
+          	"lastUpdate": "2000-01-01",
+          	"features": [1,2,3]
+        }
+*/
+
   update( vehicle: SaveVehicle  ) {
     const backendSaveVehicle = this.serializeToDotNet(vehicle );
     return this.http.put(URL_SERVICIOS + '/api/vehicles/' + vehicle.id,  backendSaveVehicle);
+  }
+
+  delete( id: number  ) {
+    return this.http.delete(URL_SERVICIOS + '/api/vehicles/' + id );
   }
 
   getVehicle( id ) {
@@ -50,21 +70,4 @@ export class VehicleService {
 
         return ret;
   }
-
-  /* OJO:
-   SaveVehicle lo necesito para los formularios.
-   BackendSaveVehicle lo necesito para enviarlo con la estructura que exige el backend, ej.
-         {
-	          "modelId": 12,
-          	"isRegistered": true,
-          	"contact" : {
-          			"name": "Conrad",
-          			"email": "Murua@esparza.com",
-          			"phone": "555444444"
-          	},
-          	"lastUpdate": "2000-01-01",
-          	"features": [1,2,3]
-        }
-*/
-
 }
