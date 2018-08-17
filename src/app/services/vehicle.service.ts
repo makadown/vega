@@ -70,4 +70,8 @@ export class VehicleService {
 
         return ret;
   }
+
+  getVehicles() {
+    return this.http.get(URL_SERVICIOS + '/api/vehicles');
+  }
 }

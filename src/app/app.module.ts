@@ -16,6 +16,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
 
 import { VehicleService } from './services/vehicle.service';
 import { AppErrorHandler } from './app.error-handler';
+import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 
 import * as Raven from 'raven-js';
 Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').install();
@@ -28,7 +29,8 @@ Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').insta
     FetchdataComponent,
     HomeComponent,
     NavmenuComponent,
-    VehicleFormComponent
+    VehicleFormComponent,
+    VehicleListComponent
   ],
   imports: [
     FormsModule,
@@ -44,6 +46,7 @@ Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').insta
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'vehicles/new', component: VehicleFormComponent },
       { path: 'vehicles/:id', component: VehicleFormComponent },
+      { path: 'vehicles', component: VehicleListComponent },
       { path: 'home', component: HomeComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchdataComponent },

@@ -108,6 +108,7 @@ export class VehicleFormComponent implements OnInit {
       this.vehicleService.create(this.vehicle).subscribe(
            x => this.toastr.success('Vehicle created', 'Success!') );
     }
+    this.router.navigate(['/vehicles']);
   }
 
   delete () {
@@ -115,9 +116,13 @@ export class VehicleFormComponent implements OnInit {
       this.vehicleService.delete (this.vehicle.id).subscribe(
         x => {
                 this.toastr.success('Vehicle deleted', 'Success!');
-                this.router.navigate(['/home']);
+                this.router.navigate(['/vehicles']);
              });
     }
+  }
+
+  cancel () {
+    this.router.navigate(['/vehicles']);
   }
 
 }
