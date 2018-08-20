@@ -71,7 +71,21 @@ export class VehicleService {
         return ret;
   }
 
-  getVehicles() {
-    return this.http.get(URL_SERVICIOS + '/api/vehicles');
+  getVehicles(filter) {
+    return this.http.get(URL_SERVICIOS + '/api/vehicles?' + this.toQueryString(filter));
+  }
+
+  toQueryString(obj: any[]) {
+    const parts = [];
+    // tslint:disable-next-line:forin
+    for (const property in obj) { /* Esto es JS, no Typescript está iterando en los atributos. */
+
+      const value = obj[property];
+      if ( value != null && value !== undefined ) {
+          parts.push(encodeURIComponent(property) + '=' +
+                     encodeURIComponent(value)  );
+      }
+    }
+    return parts.join('&');
   }
 }

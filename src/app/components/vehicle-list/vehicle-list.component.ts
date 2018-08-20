@@ -11,37 +11,38 @@ import { VehicleService } from '../../services/vehicle.service';
 export class VehicleListComponent implements OnInit {
 
   vehicles: Vehicle[];
-  allVehicles: Vehicle[];
   makes: KeyValuePair[];
-  filter: any = {};
+  query: any = {};
 
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit() {
     this.vehicleService.getMakes().subscribe( (makes: any) => this.makes = makes);
-    this.vehicleService.getVehicles()
-      .subscribe( (vehicles: any) => this.vehicles = this.allVehicles = vehicles);
+    this.populateVehicles();
   }
 
   onFilterChange() {
-   // console.log('Entrando a onFilterChange()');
-    let vehicles = this.allVehicles;
-  //  console.log('Filtrando makeId ' + this.filter.makeId);
-    if (this.filter.makeId) {
-      vehicles = vehicles.filter( v => +v.make.id === +this.filter.makeId );
-    }
-//    console.log('Filtrando modelId ' + this.filter.modelId);
-    if (this.filter.modelId) {
-      vehicles = vehicles.filter( v => +v.model.id === +this.filter.modelId );
-    }
+    this.populateVehicles();
+  }
 
-    this.vehicles = vehicles;
-
+  private populateVehicles() {
+    this.vehicleService.getVehicles(this.query)
+      .subscribe( (vehicles: any) => this.vehicles = vehicles);
   }
 
   resetFilter() {
-      this.filter = {};
+      this.query = {};
       this.onFilterChange();
+  }
+
+  sortBy(columnName) {
+    if (this.query.sortBy === columnName) {
+      this.query.isSortAscending = false;
+    } else {
+      this.query.sortBy = columnName;
+      this.query.isSortAscending = true;
+    }
+    this.populateVehicles();
   }
 
 }

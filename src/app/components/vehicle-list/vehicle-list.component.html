@@ -4,19 +4,19 @@
 </p>
 <div class="card card-body bg-light">
     <label for="make"><b>Make</b></label>
-    <select name="make" id="make" class="form-control" [(ngModel)]="filter.makeId" (change)="onFilterChange()">
+    <select name="make" id="make" class="form-control" [(ngModel)]="query.makeId" (change)="onFilterChange()">
         <option value=""></option>
         <option *ngFor="let m of makes" value="{{m.id}}">{{ m.name }}</option>
     </select>
-    <button class="btn btn-default" (click)="resetFilter()">Reset</button>
+    <button class="btn btn-default" (click)="resetFilter()">Reset filter</button>
 </div>
 <table class="table">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Contact Name</th>
+            <th (click)="sortBy('make')">Make</th>
+            <th (click)="sortBy('model')">Model</th>
+            <th (click)="sortBy('contactName')">Contact Name</th>
             <th></th>
         </tr>
     </thead>

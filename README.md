@@ -28,6 +28,8 @@ Guiado de (https://www.c-sharpcorner.com/article/how-to-install-jquery-popper-an
 
 > npm install ngx-toastr --save
 
+> npm install @fortawesome/fontawesome-free
+
 - Opcional para sentry.io (logger)
 > npm install raven-js --save
 
