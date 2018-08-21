@@ -2,6 +2,7 @@ import { KeyValuePair } from './../../models/KeyValuePair';
 import { Component, OnInit } from '@angular/core';
 import { Vehicle } from '../../models/Vehicle';
 import { VehicleService } from '../../services/vehicle.service';
+import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -13,6 +14,8 @@ export class VehicleListComponent implements OnInit {
   vehicles: Vehicle[];
   makes: KeyValuePair[];
   query: any = {};
+  sortUpIcon = faSortUp;
+  sortDownIcon = faSortDown;
 
   constructor(private vehicleService: VehicleService) { }
 
@@ -36,8 +39,9 @@ export class VehicleListComponent implements OnInit {
   }
 
   sortBy(columnName) {
+
     if (this.query.sortBy === columnName) {
-      this.query.isSortAscending = false;
+      this.query.isSortAscending = !this.query.isSortAscending ;
     } else {
       this.query.sortBy = columnName;
       this.query.isSortAscending = true;

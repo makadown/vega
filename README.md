@@ -28,16 +28,25 @@ Guiado de (https://www.c-sharpcorner.com/article/how-to-install-jquery-popper-an
 
 > npm install ngx-toastr --save
 
-> npm install @fortawesome/fontawesome-free
-
 - Opcional para sentry.io (logger)
 > npm install raven-js --save
+
+- Este es para iconos, muy bueno
+
+> npm install @fortawesome/fontawesome-svg-core --save
+
+> npm install @fortawesome/free-solid-svg-icons  --save
+
+> npm install @fortawesome/angular-fontawesome --save
+
+> npm install @fortawesome/free-regular-svg-icons --save
+
+Obtenido de https://github.com/FortAwesome/angular-fontawesome y la galería https://fontawesome.com/icons?d=gallery
 
 
 en angular.json agregar :
 
-`"styles": [
-  
+`"styles": [  
               "src/styles.css",
               
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -45,9 +54,7 @@ en angular.json agregar :
               "./node_modules/ngx-toastr/toastr.css"
 
             ],
-
-"scripts": [
-  
+"scripts": [  
               "./node_modules/jquery/dist/jquery.min.js",
               
               "./node_modules/popper.js/dist/umd/popper.min.js",
