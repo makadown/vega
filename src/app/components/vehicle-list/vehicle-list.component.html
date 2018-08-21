@@ -10,8 +10,7 @@
     </select>
     <button class="btn btn-default" (click)="resetFilter()">Reset filter</button>
 </div>
-Debug - {{query | json}} -
-<table class="table">
+<table class="table" *ngIf="vehicles?.length>0; else noHayDatos">
     <thead>
         <tr>
             <th *ngFor="let c of columns">
@@ -36,3 +35,6 @@ Debug - {{query | json}} -
         </tr>
     </tbody>
 </table>
+<ng-template #noHayDatos>
+    <div class="card card-body bg-light">No hay datos.</div>
+</ng-template>
