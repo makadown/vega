@@ -16,6 +16,13 @@ export class VehicleListComponent implements OnInit {
   query: any = {};
   sortUpIcon = faSortUp;
   sortDownIcon = faSortDown;
+  columns: any = [
+      {title: 'Id'},
+      {title: 'ContactName', key: 'contactName', isSortable: true},
+      {title: 'Make', key: 'make', isSortable: true},
+      {title: 'Model', key: 'model', isSortable: true},
+      {}
+  ];
 
   constructor(private vehicleService: VehicleService) { }
 

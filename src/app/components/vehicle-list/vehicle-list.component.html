@@ -14,15 +14,14 @@ Debug - {{query | json}} -
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
-            <th (click)="sortBy('make')">
-                Make
-                <fa-icon *ngIf="query.sortBy === 'make' && query.isSortAscending" [icon]="sortUpIcon"></fa-icon>
-                <fa-icon *ngIf="query.sortBy === 'make' && !query.isSortAscending" [icon]="sortDownIcon"></fa-icon>
+            <th *ngFor="let c of columns">
+                <div *ngIf="c.isSortable;else otraCosaMariposa" (click)="sortBy(c.key)">
+                    {{c.title}}
+                    <fa-icon *ngIf="query.sortBy === c.key && query.isSortAscending" [icon]="sortUpIcon"></fa-icon>
+                    <fa-icon *ngIf="query.sortBy === c.key && !query.isSortAscending" [icon]="sortDownIcon"></fa-icon>
+                </div>
+                <ng-template #otraCosaMariposa> {{c.title}} </ng-template>
             </th>
-            <th (click)="sortBy('model')">Model</th>
-            <th (click)="sortBy('contactName')">Contact Name</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
