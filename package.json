@@ -29,6 +29,7 @@
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
     "ngx-bootstrap": "^3.0.1",
+    "ngx-loading": "^1.0.14",
     "ngx-toastr": "^9.0.0",
     "popper.js": "^1.14.3",
     "raven-js": "^3.26.4",

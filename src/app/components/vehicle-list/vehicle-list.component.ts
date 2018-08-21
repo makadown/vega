@@ -10,6 +10,7 @@ import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./vehicle-list.component.css']
 })
 export class VehicleListComponent implements OnInit {
+  public loading = false;
 
   vehicles: Vehicle[];
   makes: KeyValuePair[];
@@ -27,7 +28,11 @@ export class VehicleListComponent implements OnInit {
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit() {
-    this.vehicleService.getMakes().subscribe( (makes: any) => this.makes = makes);
+
+    this.vehicleService.getMakes()
+        .subscribe( (makes: any) => {
+                  this.makes = makes;
+          } );
     this.populateVehicles();
   }
 
@@ -36,8 +41,12 @@ export class VehicleListComponent implements OnInit {
   }
 
   private populateVehicles() {
+    this.loading = true;
     this.vehicleService.getVehicles(this.query)
-      .subscribe( (vehicles: any) => this.vehicles = vehicles);
+          .subscribe( (vehicles: any) => {
+            this.vehicles = vehicles;
+            this.loading = false;
+        });
   }
 
   resetFilter() {

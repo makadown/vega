@@ -43,6 +43,9 @@ Guiado de (https://www.c-sharpcorner.com/article/how-to-install-jquery-popper-an
 
 Obtenido de https://github.com/FortAwesome/angular-fontawesome y la galería https://fontawesome.com/icons?d=gallery
 
+> npm install --save ngx-loading
+
+Obtenido de https://github.com/Zak-C/ngx-loading
 
 en angular.json agregar :
 
