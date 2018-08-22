@@ -22,6 +22,7 @@ import { VehicleListComponent } from './components/vehicle-list/vehicle-list.com
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import * as Raven from 'raven-js';
+import { PaginationComponent } from './components/shared/pagination/pagination.component';
 Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').install();
 
 
@@ -33,7 +34,8 @@ Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').insta
     HomeComponent,
     NavmenuComponent,
     VehicleFormComponent,
-    VehicleListComponent
+    VehicleListComponent,
+    PaginationComponent
   ],
   imports: [
     FormsModule,
@@ -41,10 +43,10 @@ Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').insta
     BrowserAnimationsModule,
     LoadingModule.forRoot({
       animationType: ANIMATION_TYPES.wanderingCubes,
-      backdropBackgroundColour: 'rgba(0,0,0,0.1)', 
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)',
       backdropBorderRadius: '4px',
-      primaryColour: '#ffffff', 
-      secondaryColour: '#ffffff', 
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
       tertiaryColour: '#ffffff'
     }),
     ToastrModule.forRoot({

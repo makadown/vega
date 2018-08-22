@@ -10,31 +10,34 @@
     </select>
     <button class="btn btn-default" (click)="resetFilter()">Reset filter</button>
 </div>
-<table class="table" *ngIf="vehicles?.length>0; else noHayDatos">
-    <thead>
-        <tr>
-            <th *ngFor="let c of columns">
-                <div *ngIf="c.isSortable;else otraCosaMariposa" (click)="sortBy(c.key)">
-                    {{c.title}}
-                    <fa-icon *ngIf="query.sortBy === c.key && query.isSortAscending" [icon]="sortUpIcon"></fa-icon>
-                    <fa-icon *ngIf="query.sortBy === c.key && !query.isSortAscending" [icon]="sortDownIcon"></fa-icon>
-                </div>
-                <ng-template #otraCosaMariposa> {{c.title}} </ng-template>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let v of vehicles">
-            <td>{{ v.id }}</td>
-            <td>{{ v.make.name }}</td>
-            <td>{{ v.model.name }}</td>
-            <td>{{ v.contact.name }}</td>
-            <td>
-                <a [routerLink]="['/vehicles/', v.id]">View</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="card card-body bg-light" *ngIf="vehicles?.length>0; else noHayDatos">
+    <table class="table">
+        <thead>
+            <tr>
+                <th *ngFor="let c of columns">
+                    <div *ngIf="c.isSortable;else otraCosaMariposa" (click)="sortBy(c.key)">
+                        {{c.title}}
+                        <fa-icon *ngIf="query.sortBy === c.key && query.isSortAscending" [icon]="sortUpIcon"></fa-icon>
+                        <fa-icon *ngIf="query.sortBy === c.key && !query.isSortAscending" [icon]="sortDownIcon"></fa-icon>
+                    </div>
+                    <ng-template #otraCosaMariposa> {{c.title}} </ng-template>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let v of vehicles">
+                <td>{{ v.id }}</td>
+                <td>{{ v.make.name }}</td>
+                <td>{{ v.model.name }}</td>
+                <td>{{ v.contact.name }}</td>
+                <td>
+                    <a [routerLink]="['/vehicles/', v.id]">View</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <app-pagination [totalItems]="10" [pageSize]="query.pageSize" (pageChanged)="onPageChanged($event)"></app-pagination>
+</div>
 <ng-template #noHayDatos>
     <div class="card card-body bg-light">No hay datos.</div>
 </ng-template>
