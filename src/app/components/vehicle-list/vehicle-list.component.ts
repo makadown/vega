@@ -10,12 +10,16 @@ import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./vehicle-list.component.css']
 })
 export class VehicleListComponent implements OnInit {
+
+  private readonly PAGE_SIZE = 3;
   public loading = false;
 
-  vehicles: Vehicle[];
+  totalItems = 0;
+  queryResult: any = {};
   makes: KeyValuePair[];
   query: any = {
-    pageSize: 3
+    page: 1,
+    pageSize: this.PAGE_SIZE
   };
   sortUpIcon = faSortUp;
   sortDownIcon = faSortDown;
@@ -39,21 +43,25 @@ export class VehicleListComponent implements OnInit {
   }
 
   onFilterChange() {
+    this.query.page = 1;
     this.populateVehicles();
   }
 
   private populateVehicles() {
     this.loading = true;
     this.vehicleService.getVehicles(this.query)
-          .subscribe( (vehicles: any) => {
-            this.vehicles = vehicles;
+          .subscribe( (result: any) => {
+            this.queryResult = result;
             this.loading = false;
         });
   }
 
   resetFilter() {
-      this.query = {};
-      this.onFilterChange();
+      this.query = {
+        page: 1,
+        pageSize: this.PAGE_SIZE
+      };
+      this.populateVehicles();
   }
 
   sortBy(columnName) {

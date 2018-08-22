@@ -10,7 +10,7 @@
     </select>
     <button class="btn btn-default" (click)="resetFilter()">Reset filter</button>
 </div>
-<div class="card card-body bg-light" *ngIf="vehicles?.length>0; else noHayDatos">
+<div class="card card-body bg-light" *ngIf="queryResult.items?.length>0; else noHayDatos">
     <table class="table">
         <thead>
             <tr>
@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let v of vehicles">
+            <tr *ngFor="let v of queryResult.items">
                 <td>{{ v.id }}</td>
                 <td>{{ v.make.name }}</td>
                 <td>{{ v.model.name }}</td>
@@ -36,7 +36,7 @@
             </tr>
         </tbody>
     </table>
-    <app-pagination [totalItems]="10" [pageSize]="query.pageSize" (pageChanged)="onPageChanged($event)"></app-pagination>
+    <app-pagination [totalItems]="queryResult.totalItems" [pageSize]="query.pageSize" (pageChanged)="onPageChanged($event)"></app-pagination>
 </div>
 <ng-template #noHayDatos>
     <div class="card card-body bg-light">No hay datos.</div>
