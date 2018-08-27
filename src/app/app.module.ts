@@ -23,6 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import * as Raven from 'raven-js';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
+import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.component';
 Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').install();
 
 
@@ -35,7 +36,8 @@ Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').insta
     NavmenuComponent,
     VehicleFormComponent,
     VehicleListComponent,
-    PaginationComponent
+    PaginationComponent,
+    ViewVehicleComponent
   ],
   imports: [
     FormsModule,
@@ -57,13 +59,13 @@ Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').insta
     ToastContainerModule,
     BrowserModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
       { path: 'vehicles/new', component: VehicleFormComponent },
-      { path: 'vehicles/:id', component: VehicleFormComponent },
+      { path: 'vehicles/edit/:id', component: VehicleFormComponent },
+      { path: 'vehicles/:id', component: ViewVehicleComponent },
       { path: 'vehicles', component: VehicleListComponent },
       { path: 'home', component: HomeComponent },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchdataComponent },
       { path: '**', redirectTo: 'home' }
   ]),
     HttpClientModule

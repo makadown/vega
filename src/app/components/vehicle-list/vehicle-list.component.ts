@@ -1,6 +1,5 @@
 import { KeyValuePair } from './../../models/KeyValuePair';
 import { Component, OnInit } from '@angular/core';
-import { Vehicle } from '../../models/Vehicle';
 import { VehicleService } from '../../services/vehicle.service';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 

@@ -34,7 +34,7 @@ export class VehicleFormComponent implements OnInit {
               private toastr: ToastrService) {
 
         route.params.subscribe(p => {
-                this.vehicle.id = +p['id'];
+                this.vehicle.id = +p['id'] || 0  ;
         });
   }
 
@@ -101,28 +101,19 @@ export class VehicleFormComponent implements OnInit {
   }
 
   submit() {
-    if ( this.vehicle.id != null && this.vehicle.id > 0 ) {
-      this.vehicleService.update(this.vehicle).subscribe(
-        x => this.toastr.success('Vehicle updated', 'Success!') );
-    } else {
-      this.vehicleService.create(this.vehicle).subscribe(
-           x => this.toastr.success('Vehicle created', 'Success!') );
-    }
-    this.router.navigate(['/vehicles']);
-  }
-
-  delete () {
-    if (confirm('Are you sure?')) {
-      this.vehicleService.delete (this.vehicle.id).subscribe(
-        x => {
-                this.toastr.success('Vehicle deleted', 'Success!');
-                this.router.navigate(['/vehicles']);
-             });
-    }
+    const result$ = (this.vehicle.id) ? this.vehicleService.update(this.vehicle) : this.vehicleService.create(this.vehicle);
+    result$.subscribe( (vehicle: any) => {
+      this.toastr.success('Data was succesfully saved', 'Success!');
+      this.router.navigate(['/vehicles/', vehicle.id]);
+    });
   }
 
   cancel () {
-    this.router.navigate(['/vehicles']);
+    let ruta = '/vehicles';
+    if ( this.vehicle.id != null && this.vehicle.id > 0 ) {
+      ruta = ruta + '/' + this.vehicle.id;
+    }
+    this.router.navigate([ruta]);
   }
 
 }

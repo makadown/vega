@@ -47,6 +47,9 @@ Obtenido de https://github.com/FortAwesome/angular-fontawesome y la galería htt
 
 Obtenido de https://github.com/Zak-C/ngx-loading
 
+para filtrar:
+// TODO:  https://l-lin.github.io/angular-datatables/#/getting-started
+
 en angular.json agregar :
 
 ```json

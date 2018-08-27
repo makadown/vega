@@ -54,7 +54,6 @@
     </div>
     <div class="alert alert-danger" *ngIf="contactEmail.touched && !contactEmail.valid">Please specify the model.</div>
     <button class="btn btn-primary" [disabled]="!f.valid">Save</button> &nbsp;&nbsp;&nbsp;
-    <button *ngIf="vehicle.id" class="btn btn-danger" type="button" (click)="delete()">Delete</button>&nbsp;&nbsp;&nbsp;
     <button class="btn btn-info" type="button" (click)="cancel()">Cancel</button>
 
 </form>
