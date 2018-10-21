@@ -15,4 +15,9 @@ export class PhotoService {
         return this.http.post(URL_SERVICIOS + endPoint_Vehiculos + '/' +
                        vehicleId + '/photos', formData);
     }
+
+    getPhotos(vehicleId) {
+        return this.http.get(URL_SERVICIOS + endPoint_Vehiculos + '/' +
+                vehicleId + '/photos');
+    }
 }

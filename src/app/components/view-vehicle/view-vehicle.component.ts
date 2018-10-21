@@ -13,6 +13,7 @@ export class ViewVehicleComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
   vehicle: any;
   vehicleId: number;
+  photos: any[];
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -30,6 +31,11 @@ export class ViewVehicleComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    /* TODO: Jalar las imagenes del backend, no nomas el nombre del archivo...
+    https://stackoverflow.com/questions/45530752/getting-image-from-api-in-angular-4-5 */
+    this.photoService.getPhotos(this.vehicleId).subscribe( (photos: any) => this.photos = photos);
+
     this.vehicleService.getVehicle(this.vehicleId)
       .subscribe(
         v => this.vehicle = v,
@@ -54,6 +60,8 @@ export class ViewVehicleComponent implements OnInit {
 
     /* En esta aplicación sólo estaré subiendo un elemento a la vez */
     this.photoService.upload(this.vehicleId, nativeElement.files[0])
-         .subscribe( x => console.log(x) );
+         .subscribe( (photo: any) => {
+           this.photos.push(photo);
+         });
   }
 }
