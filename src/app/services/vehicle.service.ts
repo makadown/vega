@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { URL_SERVICIOS } from '../config/url.servicios';
+import { URL_SERVICIOS, endPoint_Vehiculos, endPoint_Makes, endPoint_Features } from '../config/url.servicios';
 import { SaveVehicle, BackendSaveVehicle } from '../models/SaveVehicle';
 
 @Injectable({
@@ -12,16 +12,16 @@ export class VehicleService {
 
   getMakes() {
        // console.log('Peticion a ', URL_SERVICIOS + '/api/makes');
-       return this.http.get(URL_SERVICIOS + '/api/makes');
+       return this.http.get(URL_SERVICIOS + endPoint_Makes);
   }
 
   public getFeatures() {
-    return this.http.get(URL_SERVICIOS + '/api/features');
+    return this.http.get(URL_SERVICIOS + endPoint_Features);
   }
 
   create( vehicle: SaveVehicle ) {
     const backendSaveVehicle = this.serializeToDotNet(vehicle );
-    return this.http.post(URL_SERVICIOS + '/api/vehicles', backendSaveVehicle);
+    return this.http.post(URL_SERVICIOS + endPoint_Vehiculos, backendSaveVehicle);
   }
 
   /* OJO:
@@ -42,15 +42,15 @@ export class VehicleService {
 
   update( vehicle: SaveVehicle  ) {
     const backendSaveVehicle = this.serializeToDotNet(vehicle );
-    return this.http.put(URL_SERVICIOS + '/api/vehicles/' + vehicle.id,  backendSaveVehicle);
+    return this.http.put(URL_SERVICIOS + endPoint_Vehiculos + '/' + vehicle.id,  backendSaveVehicle);
   }
 
   delete( id: number  ) {
-    return this.http.delete(URL_SERVICIOS + '/api/vehicles/' + id );
+    return this.http.delete(URL_SERVICIOS + endPoint_Vehiculos + '/' + id );
   }
 
   getVehicle( id ) {
-    return this.http.get(URL_SERVICIOS + '/api/vehicles/' + id );
+    return this.http.get(URL_SERVICIOS + endPoint_Vehiculos + '/' + id );
   }
 
   private serializeToDotNet(vehicle: SaveVehicle) {
@@ -72,7 +72,7 @@ export class VehicleService {
   }
 
   getVehicles(filter) {
-    return this.http.get(URL_SERVICIOS + '/api/vehicles?' + this.toQueryString(filter));
+    return this.http.get(URL_SERVICIOS + endPoint_Vehiculos + '?' + this.toQueryString(filter));
   }
 
   toQueryString(obj: any[]) {

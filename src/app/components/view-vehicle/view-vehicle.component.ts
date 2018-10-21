@@ -1,7 +1,8 @@
 import { ToastrService } from 'ngx-toastr';
 import { VehicleService } from './../../services/vehicle.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PhotoService } from '../../services/photo.service';
 
 @Component({
   selector: 'app-view-vehicle',
@@ -9,12 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./view-vehicle.component.css']
 })
 export class ViewVehicleComponent implements OnInit {
+  @ViewChild('fileInput') fileInput: ElementRef;
   vehicle: any;
   vehicleId: number;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private toasty: ToastrService,
+    private photoService: PhotoService,
     private vehicleService: VehicleService) {
 
       route.params.subscribe(p => {
@@ -45,5 +48,12 @@ export class ViewVehicleComponent implements OnInit {
           this.router.navigate(['/vehicles']);
         });
     }
+  }
+  uploadPhoto() {
+    const nativeElement: HTMLInputElement = this.fileInput.nativeElement;
+
+    /* En esta aplicación sólo estaré subiendo un elemento a la vez */
+    this.photoService.upload(this.vehicleId, nativeElement.files[0])
+         .subscribe( x => console.log(x) );
   }
 }

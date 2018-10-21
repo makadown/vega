@@ -16,6 +16,7 @@ import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 
 import { VehicleService } from './services/vehicle.service';
+import { PhotoService } from './services/photo.service';
 import { AppErrorHandler } from './app.error-handler';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 
@@ -24,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import * as Raven from 'raven-js';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.component';
+
 Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').install();
 
 
@@ -72,7 +74,7 @@ Raven.config('https://ce4633ab96e24c11a924b4ffa425e2c7@sentry.io/1263165').insta
   ],
   providers: [
         {provide: ErrorHandler, useClass: AppErrorHandler},
-        VehicleService
+        VehicleService, PhotoService
   ],
   bootstrap: [AppComponent]
 })
